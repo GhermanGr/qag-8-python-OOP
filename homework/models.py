@@ -6,12 +6,14 @@ class Product:
     price: float
     description: str
     quantity: int
+    purchase_quantity: int
 
-    def __init__(self, name, price, description, quantity):
+    def __init__(self, name, price, description, quantity, purchase_quantity):
         self.name = name
         self.price = price
         self.description = description
         self.quantity = quantity
+        self.purchase_quantity = purchase_quantity
 
     def check_quantity(self, quantity) -> bool:
         """
@@ -23,7 +25,7 @@ class Product:
         else:
             return False
 
-    def buy(self, purchase_quantity):
+    def buy(self, purchase_quantity) -> int:
         """
         TODO реализуйте метод покупки
             Проверьте количество продукта используя метод check_quantity
@@ -32,6 +34,7 @@ class Product:
         if self.check_quantity(purchase_quantity) == True:
             self.quantity = self.quantity - purchase_quantity
             print(f"Now we have {self.quantity} of product.")
+            return self.quantity
         else:
             raise ValueError
 
