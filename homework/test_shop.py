@@ -8,7 +8,7 @@ from homework.models import Product
 
 @pytest.fixture
 def product():
-    return Product("book", 100, "This is a book", 5, 5)
+    return Product("book", 100, "This is a book", 5)
 
 
 class TestProducts:
@@ -24,11 +24,12 @@ class TestProducts:
     def test_product_check_quantity_over_limit(self, product):
         assert product.check_quantity(product.quantity + 1) == False
 
-    def test_product_buy_quntity_decrease(self, product):
+    def test_product_buy_quantity_decrease(self, product):
         # TODO напишите проверки на метод buy
         initial_quantity = product.quantity
-        product.buy(product.purchase_quantity)
-        assert product.quantity == initial_quantity - product.purchase_quantity
+        buy_count = 5
+        product.buy(buy_count)
+        assert product.quantity == initial_quantity - buy_count
 
     def test_product_buy_more_than_available(self, product):
         # TODO напишите проверки на метод buy,

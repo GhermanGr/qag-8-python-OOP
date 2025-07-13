@@ -6,14 +6,12 @@ class Product:
     price: float
     description: str
     quantity: int
-    purchase_quantity: int
 
-    def __init__(self, name, price, description, quantity, purchase_quantity):
+    def __init__(self, name, price, description, quantity):
         self.name = name
         self.price = price
         self.description = description
         self.quantity = quantity
-        self.purchase_quantity = purchase_quantity
 
     def check_quantity(self, quantity) -> bool:
         """
@@ -25,14 +23,15 @@ class Product:
         else:
             return False
 
-    def buy(self, purchase_quantity) -> int:
+    def buy(self, buy_count) -> int:
         """
         TODO реализуйте метод покупки
             Проверьте количество продукта используя метод check_quantity
             Если продуктов не хватает, то выбросите исключение ValueError
         """
-        if self.check_quantity(purchase_quantity) == True:
-            self.quantity = self.quantity - purchase_quantity
+
+        if self.check_quantity(buy_count) == True:
+            self.quantity = self.quantity - buy_count
             print(f"Now we have {self.quantity} of product.")
             return self.quantity
         else:
@@ -60,6 +59,8 @@ class Cart:
         Метод добавления продукта в корзину.
         Если продукт уже есть в корзине, то увеличиваем количество
         """
+        for product in buy_count:
+            self.pro
         raise NotImplementedError
 
     def remove_product(self, product: Product, remove_count=None):
